@@ -1,10 +1,9 @@
 // Define questions array with data dictionary structure
-// Define questions array with data dictionary structure
 const questions = [
     {
         question: "What is a computer program?",
         correct_answer: "A1",
-        incorrect_answers: ["B1.1", "B1.2", "B1.3"],
+        incorrect_answers: ["B1_1", "B1_2", "B1_3"],
         answered: false,
         custom_feedback: {
             correct: "You got it right! A computer program is indeed a set of instructions that tells the computer what to do.",
@@ -14,7 +13,7 @@ const questions = [
     {
         question: "What does a programmer do?",
         correct_answer: "A2",
-        incorrect_answers: ["B2.1", "B2.2", "B2.3"],
+        incorrect_answers: ["B2_1", "B2_2", "B2_3"],
         answered: false,
         custom_feedback: {
             correct: "Correct! Programmers write code to make software and apps.",
@@ -24,7 +23,7 @@ const questions = [
     {
         question: "What is the symbol used to end a line of code in many programming languages?",
         correct_answer: "A3",
-        incorrect_answers: ["B3.1", "B3.2", "B3.3"],
+        incorrect_answers: ["B3_1", "B3_2", "B3_3"],
         answered: false,
         custom_feedback: {
             correct: "Right! The symbol used to end a line of code in many programming languages is ; (semicolon).",
@@ -34,7 +33,7 @@ const questions = [
     {
         question: "Which of these is NOT a programming language?",
         correct_answer: "A4",
-        incorrect_answers: ["B4.1", "B4.2", "B4.3"],
+        incorrect_answers: ["B4_1", "B4_2", "B4_3"],
         answered: false,
         custom_feedback: {
             correct: "Correct! French is not a programming language.",
@@ -44,7 +43,7 @@ const questions = [
     {
         question: "What is a loop in programming?",
         correct_answer: "A5",
-        incorrect_answers: ["B5.1", "B5.2", "B5.3"],
+        incorrect_answers: ["B5_1", "B5_2", "B5_3"],
         answered: false,
         custom_feedback: {
             correct: "You're right! A loop in programming is a way to repeat a set of instructions.",
@@ -54,7 +53,7 @@ const questions = [
     {
         question: "What does HTML stand for?",
         correct_answer: "A6",
-        incorrect_answers: ["B6.1", "B6.2", "B6.3"],
+        incorrect_answers: ["B6_1", "B6_2", "B6_3"],
         answered: false,
         custom_feedback: {
             correct: "Correct! HTML stands for Hyper Text Markup Language.",
@@ -64,7 +63,7 @@ const questions = [
     {
         question: "What does CSS do in web development?",
         correct_answer: "A7",
-        incorrect_answers: ["B7.1", "B7.2", "B7.3"],
+        incorrect_answers: ["B7_1", "B7_2", "B7_3"],
         answered: false,
         custom_feedback: {
             correct: "Right! CSS styles the appearance of web pages.",
@@ -74,7 +73,7 @@ const questions = [
     {
         question: "What is the name of the programming language used in the game 'Scratch'?",
         correct_answer: "A8",
-        incorrect_answers: ["B8.1", "B8.2", "B8.3"],
+        incorrect_answers: ["B8_1", "B8_2", "B8_3"],
         answered: false,
         custom_feedback: {
             correct: "Correct! The programming language used in the game 'Scratch' is Scratch.",
@@ -84,7 +83,7 @@ const questions = [
     {
         question: "Which of the following is used to store information in a computer program?",
         correct_answer: "A9",
-        incorrect_answers: ["B9.1", "B9.2", "B9.3"],
+        incorrect_answers: ["B9_1", "B9_2", "B9_3"],
         answered: false,
         custom_feedback: {
             correct: "You got it! Variables are used to store information in a computer program.",
@@ -94,7 +93,7 @@ const questions = [
     {
         question: "What does a 'bug' mean in programming?",
         correct_answer: "A10",
-        incorrect_answers: ["B10.1", "B10.2", "B10.3"],
+        incorrect_answers: ["B10_1", "B10_2", "B10_3"],
         answered: false,
         custom_feedback: {
             correct: "You're correct! A 'bug' in programming refers to an error in the code.",
@@ -119,36 +118,36 @@ const correct_answers = {
 
 // Define incorrect answers
 const incorrect_answers = {
-    B1,1: "B) A type of video game",
-    B1,2: "C) A special kind of food",
-    B1,3: "D) A book about computers",
-    B2,1: "B) Fixes broken computers",
-    B2,2: "C) Cooks delicious meals",
-    B2,3: "D) Drives cars",
-    B3,1: "A) $",
-    B3,2: "B) %",
-    B3,3: "D) :",
-    B4,1: "A) Python",
-    B4,2: "C) Scratch",
-    B4,3: "D) JavaScript",
-    B5,1: "A) A circle-shaped tool",
-    B5,2: "C) A type of dance",
-    B5,3: "D) A kind of knot",
-    B6,1: "B) How to Make Lunch",
-    B6,2: "C) Hello To My Land",
-    B6,3: "D) High Tech Movie List",
-    B7,1: "B) Creates cookies for websites",
-    B7,2: "C) Calculates math problems",
-    B7,3: "D) Stores passwords securely",
-    B8,1: "A) Scratchy",
-    B8,2: "B) Scratchy Code",
-    B8,3: "D) Scratch and Sniff",
-    B9,1: "B) Bananas",
-    B9,2: "C) Clouds",
-    B9,3: "D) Rockets",
-    B10,1: "A) An insect",
-    B10,2: "C) A feature of the program",
-    B10,3: "D) A type of food"
+    B1_1: "B) A type of video game",
+    B1_2: "C) A special kind of food",
+    B1_3: "D) A book about computers",
+    B2_1: "B) Fixes broken computers",
+    B2_2: "C) Cooks delicious meals",
+    B2_3: "D) Drives cars",
+    B3_1: "A) $",
+    B3_2: "B) %",
+    B3_3: "D) :",
+    B4_1: "A) Python",
+    B4_2: "C) Scratch",
+    B4_3: "D) JavaScript",
+    B5_1: "A) A circle-shaped tool",
+    B5_2: "C) A type of dance",
+    B5_3: "D) A kind of knot",
+    B6_1: "B) How to Make Lunch",
+    B6_2: "C) Hello To My Land",
+    B6_3: "D) High Tech Movie List",
+    B7_1: "B) Creates cookies for websites",
+    B7_2: "C) Calculates math problems",
+    B7_3: "D) Stores passwords securely",
+    B8_1: "A) Scratchy",
+    B8_2: "B) Scratchy Code",
+    B8_3: "D) Scratch and Sniff",
+    B9_1: "B) Bananas",
+    B9_2: "C) Clouds",
+    B9_3: "D) Rockets",
+    B10_1: "A) An insect",
+    B10_2: "C) A feature of the program",
+    B10_3: "D) A type of food"
 };
 
 
@@ -165,18 +164,12 @@ function displayQuestion() {
     // Display question
     questionContainer.innerHTML = `<h2>${randomQuestion.question}</h2>`;
     // Display correct answer
-    questionContainer.innerHTML += `<button class="option">${correctAnswers[randomQuestion.correct_answer]}</button>`;
+    questionContainer.innerHTML += `<button class="option">${correct_answers[randomQuestion.correct_answer]}</button>`;
     // Display incorrect answers
     randomQuestion.incorrect_answers.forEach(answer => {
-        questionContainer.innerHTML += `<button class="option">${incorrectAnswers[answer]}</button>`;
+        questionContainer.innerHTML += `<button class="option">${incorrect_answers[answer]}</button>`;
     });
 }
-
-// Event listener for start test button
-document.getElementById("startTestBtn").addEventListener("click", () => {
-    // Start the test
-    startTest();
-});
 
 // Function to start the test
 function startTest() {
@@ -185,6 +178,9 @@ function startTest() {
     // Display question
     displayQuestion();
 }
+
+// Event listener for start test button
+document.getElementById("startTestBtn").addEventListener("click", startTest);
 
 // Event delegation for options
 document.getElementById("questionContainer").addEventListener("click", (event) => {
@@ -200,7 +196,7 @@ function handleAnswerSubmission(selectedOption) {
     const currentQuestion = questions.find(question => !question.answered);
     
     // Check if the selected answer is correct
-    if (selectedOption === correctAnswers[currentQuestion.correct_answer]) {
+    if (selectedOption === correct_answers[currentQuestion.correct_answer]) {
         // Display custom correct message
         displayMessage(currentQuestion.custom_feedback.correct, "green");
     } else {
