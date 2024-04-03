@@ -182,6 +182,14 @@ const questions = [
     }
 ];
 
+// Function to shuffle array
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
 // Function to display a question
 function displayQuestion() {
     // Get question container element
@@ -190,12 +198,21 @@ function displayQuestion() {
     questionContainer.innerHTML = "";
     // Get unanswered questions
     const unansweredQuestions = questions.filter(question => !question.answered);
+    // Check if there are unanswered questions
+    if (unansweredQuestions.length === 0) {
+        // If no unanswered questions, display a message indicating the end of the test
+        questionContainer.innerHTML = "<p>End of the test.</p>";
+        return;
+    }
     // Get random question
     const randomQuestion = unansweredQuestions[Math.floor(Math.random() * unansweredQuestions.length)];
     // Display question
     questionContainer.innerHTML = `<h2>${randomQuestion.question}</h2>`;
+    // Shuffle answer options
+    const optionsArray = Object.entries(randomQuestion.options);
+    shuffleArray(optionsArray);
     // Display answer options
-    Object.entries(randomQuestion.options).forEach(([key, value]) => {
+    optionsArray.forEach(([key, value]) => {
         questionContainer.innerHTML += `<button class="option" data-answer="${key}">${value}</button>`;
     });
 }
@@ -203,13 +220,12 @@ function displayQuestion() {
 // Event listener for start test button
 document.getElementById("startTestBtn").addEventListener("click", () => {
     // Start the test
+    document.getElementById("mainScreen").style.display = "none";
     startTest();
 });
 
 // Function to start the test
 function startTest() {
-    // Hide start test button
-    document.getElementById("startTestBtn").style.display = "none";
     // Display question
     displayQuestion();
 }
@@ -226,13 +242,10 @@ document.getElementById("questionContainer").addEventListener("click", (event) =
 function handleAnswerSubmission(selectedOption) {
     // Get the current unanswered question object
     const currentQuestion = questions.find(question => !question.answered);
-   
     // Display custom feedback
     displayMessage(currentQuestion.custom_feedback[selectedOption], selectedOption === currentQuestion.correct_answer ? "green" : "red");
-   
     // Mark question as answered
     currentQuestion.answered = true;
-   
     // Display next question
     displayQuestion();
 }
@@ -244,3 +257,5 @@ function displayMessage(message, color) {
     messageContainer.style.color = color;
 }
 
+// Initial display of main screen
+document.getElementById("mainScreen").style.display = "block";
