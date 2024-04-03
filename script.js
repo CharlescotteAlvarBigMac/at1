@@ -182,6 +182,7 @@ const questions = [
     }
 ];
 
+
 // Function to shuffle array
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -196,20 +197,20 @@ function displayQuestion() {
     const questionContainer = document.getElementById("questionContainer");
     // Clear previous content
     questionContainer.innerHTML = "";
-    // Get unanswered questions
-    const unansweredQuestions = questions.filter(question => !question.answered);
+    // Shuffle questions
+    shuffleArray(questions);
+    // Get the first unanswered question
+    const currentQuestion = questions.find(question => !question.answered);
     // Check if there are unanswered questions
-    if (unansweredQuestions.length === 0) {
+    if (!currentQuestion) {
         // If no unanswered questions, display a message indicating the end of the test
         questionContainer.innerHTML = "<p>End of the test.</p>";
         return;
     }
-    // Get random question
-    const randomQuestion = unansweredQuestions[Math.floor(Math.random() * unansweredQuestions.length)];
     // Display question
-    questionContainer.innerHTML = `<h2>${randomQuestion.question}</h2>`;
+    questionContainer.innerHTML = `<h2>${currentQuestion.question}</h2>`;
     // Shuffle answer options
-    const optionsArray = Object.entries(randomQuestion.options);
+    const optionsArray = Object.entries(currentQuestion.options);
     shuffleArray(optionsArray);
     // Display answer options
     optionsArray.forEach(([key, value]) => {
@@ -243,7 +244,8 @@ function handleAnswerSubmission(selectedOption) {
     // Get the current unanswered question object
     const currentQuestion = questions.find(question => !question.answered);
     // Display custom feedback
-    displayMessage(currentQuestion.custom_feedback[selectedOption], selectedOption === currentQuestion.correct_answer ? "green" : "red");
+    const feedback = currentQuestion.custom_feedback[selectedOption];
+    displayMessage(feedback, selectedOption === currentQuestion.correct_answer ? "green" : "red");
     // Mark question as answered
     currentQuestion.answered = true;
     // Display next question
