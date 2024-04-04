@@ -182,15 +182,6 @@ const questions = [
     }
 ];
 
-
-// Function to shuffle array
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-}
-
 // Function to display a question
 function displayQuestion() {
     // Get question container element
@@ -205,6 +196,7 @@ function displayQuestion() {
     if (!currentQuestion) {
         // If no unanswered questions, display a message indicating the end of the test
         questionContainer.innerHTML = "<p>End of the test.</p>";
+        document.getElementById("restartTestBtn").style.display = "block";
         return;
     }
     // Display question
@@ -222,6 +214,19 @@ function displayQuestion() {
 document.getElementById("startTestBtn").addEventListener("click", () => {
     // Start the test
     document.getElementById("mainScreen").style.display = "none";
+    document.getElementById("restartTestBtn").style.display = "none";
+    startTest();
+});
+
+// Event listener for restart test button
+document.getElementById("restartTestBtn").addEventListener("click", () => {
+    // Restart the test
+    document.getElementById("mainScreen").style.display = "none";
+    document.getElementById("restartTestBtn").style.display = "none";
+    document.getElementById("messageContainer").textContent = "";
+    questions.forEach(question => {
+        question.answered = false;
+    });
     startTest();
 });
 
