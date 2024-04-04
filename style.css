@@ -27,16 +27,22 @@ button {
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 8px;
+    width: 200px;
+    box-sizing: border-box;
 }
 
 button:hover {
     background-color: #45a049;
 }
 
-#questionContainer {
+.question-container {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.option-container {
     margin-bottom: 20px;
 }
 
@@ -56,8 +62,14 @@ button:hover {
     background-color: #f0f0f0;
 }
 
+.custom-feedback {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555; /* Adjust text color as needed */
+}
+
 #resultContainer {
-    background-color: #ffffff; /* Change background color */
+    background-color: #ffffff;
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 20px;
@@ -69,4 +81,12 @@ button:hover {
 
 #restartTestBtn:hover {
     background-color: #d32f2f;
+}
+
+/* Adjust the size of answer buttons for specific questions */
+.question-container:nth-child(3) .option,
+.question-container:nth-child(6) .option,
+.question-container:nth-child(9) .option {
+    padding: 8px; /* Adjust padding as needed */
+    font-size: 14px; /* Adjust font size as needed */
 }

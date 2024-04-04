@@ -196,6 +196,8 @@ function displayQuestion() {
     const questionContainer = document.getElementById("questionContainer");
     // Clear previous content
     questionContainer.innerHTML = "";
+    // Shuffle questions
+    shuffleArray(questions);
     // Get the first unanswered question
     const currentQuestion = questions.find(question => !question.answered);
     // Check if there are unanswered questions
