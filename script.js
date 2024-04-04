@@ -182,23 +182,41 @@ const questions = [
     }
 ];
 
+let correctCount = 0;
+
+// Function to shuffle array
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
 // Function to display a question
 function displayQuestion() {
     // Get question container element
     const questionContainer = document.getElementById("questionContainer");
     // Clear previous content
     questionContainer.innerHTML = "";
+    // If all questions have been answered correctly, end the test
+    if (correctCount === 10) {
+        endTest();
+        return;
+    }
     // Shuffle questions
     shuffleArray(questions);
     // Get the first unanswered question
     const currentQuestion = questions.find(question => !question.answered);
-    // Check if there are unanswered questions
-    if (!currentQuestion) {
-        // If no unanswered questions, display a message indicating the end of the test
-        questionContainer.innerHTML = "<p>End of the test.</p>";
-        document.getElementById("restartTestBtn").style.display = "block";
-        return;
-    }
+    // Display question
+    displayQuestionByIndex(questions.indexOf(currentQuestion));
+}
+
+// Function to display a question by index
+function displayQuestionByIndex(index) {
+    // Get question container element
+    const questionContainer = document.getElementById("questionContainer");
+    // Get current question
+    const currentQuestion = questions[index];
     // Display question
     questionContainer.innerHTML = `<h2>${currentQuestion.question}</h2>`;
     // Shuffle answer options
@@ -227,6 +245,7 @@ document.getElementById("restartTestBtn").addEventListener("click", () => {
     questions.forEach(question => {
         question.answered = false;
     });
+    correctCount = 0;
     startTest();
 });
 
@@ -251,6 +270,11 @@ function handleAnswerSubmission(selectedOption) {
     // Display custom feedback
     const feedback = currentQuestion.custom_feedback[selectedOption];
     displayMessage(feedback, selectedOption === currentQuestion.correct_answer ? "green" : "red");
+    // If answer is correct, increment correctCount and remove question from array
+    if (selectedOption === currentQuestion.correct_answer) {
+        correctCount++;
+        questions.splice(questions.indexOf(currentQuestion), 1);
+    }
     // Mark question as answered
     currentQuestion.answered = true;
     // Display next question
@@ -262,6 +286,12 @@ function displayMessage(message, color) {
     const messageContainer = document.getElementById("messageContainer");
     messageContainer.textContent = message;
     messageContainer.style.color = color;
+}
+
+// Function to end the test
+function endTest() {
+    document.getElementById("questionContainer").innerHTML = "<p>End of the test. Congratulations!</p>";
+    document.getElementById("restartTestBtn").style.display = "block";
 }
 
 // Initial display of main screen
