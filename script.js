@@ -182,7 +182,7 @@ const questions = [
     }
  ];
  
- // Function to shuffle array
+// Function to shuffle array
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -250,6 +250,16 @@ document.getElementById("questionContainer").addEventListener("click", (event) =
     }
 });
 
+// Event listener for next question button
+document.getElementById("nextQuestionBtn").addEventListener("click", () => {
+    // Clear message container
+    document.getElementById("messageContainer").textContent = "";
+    // Display next question
+    displayQuestion();
+    // Hide next question button
+    document.getElementById("nextQuestionBtn").style.display = "none";
+});
+
 // Function to handle user's answer submission
 function handleAnswerSubmission(selectedOption) {
     // Get the current unanswered question object
@@ -259,8 +269,8 @@ function handleAnswerSubmission(selectedOption) {
     displayMessage(feedback, selectedOption === currentQuestion.correct_answer ? "green" : "red");
     // Mark question as answered
     currentQuestion.answered = true;
-    // Display next question
-    displayQuestion();
+    // Show next question button
+    document.getElementById("nextQuestionBtn").style.display = "block";
 }
 
 // Function to display message
