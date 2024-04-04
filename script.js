@@ -203,7 +203,7 @@ function displayQuestion() {
     // Check if there are unanswered questions
     if (!currentQuestion) {
         // If no unanswered questions, display a message indicating the end of the test
-        questionContainer.innerHTML = "<p>End of the test.</p>";
+        questionContainer.innerHTML = "<p>Congratulations on making it to the end!!!.</p>";
         document.getElementById("nextQuestionBtn").style.display = "none";
         document.getElementById("restartTestBtn").style.display = "block";
         return;
